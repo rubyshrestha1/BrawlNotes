@@ -1,12 +1,26 @@
 {% extends "base_generic.html" %}
 
-{% block title %}About Project{% endblock %}
+{% block title %}<font color="#ff0000" face="Helvetica">BrawlNotes</font>{% endblock %}
 
 {% block content %}
 
-<div class="container">
-    <p>Feel free to change the style and beautify the page using Bootstrap 4</p>
-    <p>Add a description about your project </p>
+<div class="container", style ="float:left; display:inline-block">
+    <span style="float:right; width:25%;"><img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv05s65xi-iJNIyO84eOERslqnr_2jeSnR4w&usqp=CAU"
+    width="250" height ="150">
+    </span>
+    <span style="float:left; width:75%">
+        <p>BrawlNotes is a statical database system of <i>BrawlHalla</i>. <i>BrawlHalla</i> is an
+        online multiplayer video game like the popular game Super Smash Bros. It is
+        a free 2D platform fighting game where history’s greatest warriors brawl to prove who’s
+        the best in an epic test of strength and skill. In order to analyze individual player and each game,
+        keeping track of different player and game parameters is very important. That's when our system,
+        <b>BrawlNotes</b> comes into play. BrawlNotes is an accessible and updatable repository of all
+        the variables needed for analyzing BrawlHalla game. User can get all the recent information about the
+        game and stay updated. We bet this will be a go to spot for all BrawlHalla enthusiast.
+        </p>
+    </span>
+
+
 </div>
 
 {% endblock %}
