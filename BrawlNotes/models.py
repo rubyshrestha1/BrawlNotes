@@ -32,15 +32,18 @@ class Placements_1(models.Model):
     #   that holds the official names for each event
     EventName = models.ForeignKey('Official_1_Events', on_delete=models.CASCADE)
     #This contains the placement of this player for the corresponding event
-    #   in the previous attribute
-    Placement = models.IntegerField()
+    #   in the previous attribute. It is a charField instead of an IntegerField because we
+    #  need to keep track of when a player does not play in an event. If player does not play,
+    #     it will be represented by N/A
+    Placement = models.charField(max_lenth=7)
     #This contains the player's opponents that they lost to in the event.
     #   The format will be "Player1/Player2" since SQLite3 does not have an
     #   ArrayField type to represent a tuple. The / is a delimiter between
     #   player names.
     Losses = models.CharField(max_length=100)
 
-#This class reports the characters and the frequency that the player chose them
+
+"""#This class reports the characters and the frequency that the player chose them
 #   for further analysis in 1v1.
 class Characters_1(models.Model):
     #This field will hold the year for the event
@@ -73,7 +76,8 @@ class Characters_1(models.Model):
     #   character names.
     Characters = models.CharField(max_length=50)
     #This contains the number of games that the player chose that character
-    NumGames = models.IntegerField()
+    NumGames = models.IntegerField()"""
+
 
 
 #This class acts as the player registry to link their Smashgg names on the bracket
