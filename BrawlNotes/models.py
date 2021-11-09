@@ -44,6 +44,10 @@ class Placements_1(models.Model):
     def getPowerRank(self):
         return self.PowerRank
 
+    # This function returns the Placement of given object.
+    def getPlacement(self):
+        return self.Placement
+
 #This class reports the characters and the frequency that the player chose them
 #   for further analysis in 1v1.
 class Characters_1(models.Model):

@@ -1,3 +1,5 @@
+import unittest
+
 from django.test import TestCase
 from .models import Player_Registry, Official_1_Events, Placements_1
 from parameterized import parameterized, parameterized_class
@@ -18,18 +20,20 @@ class PlayerRegistryTest(TestCase):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=123, SmashggName="Moon")
         self.assertEqual("North America", player1.Region, msg="Region is not same")  # pass
 
-    """This function tests the region field of the PlayerRegistry table. A new player object is created 
+    """This function tests error region field of the PlayerRegistry table. A new player object is created 
        with NorthAmeri, 123 and Moon as Region, BrawlhallaID and SmashggName respectively. The function then asserts if
        the object's 'Region' field matches with the given value, which in case should fail. If they do not match, 
        message that says 'Region is not same' is displayed."""
+    @unittest.expectedFailure
     def test2_region_field(self):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=123, SmashggName="Moon")
         self.assertEqual("North Ameri", player1.Region, msg="Region is not same")  # fail
 
-    """This function tests the region field of the PlayerRegistry table. A new player objects is created with 
+    """This function tests error in region field of the PlayerRegistry table. A new player objects is created with 
         NorthAmerica, "200" and test  as Region, BrawlhallaID and SmashggName respectively.
          The function then asserts if the object's 'BrawlHallaID' field matches with the given ID value. The test fails
           in this case as type of BrawlHallaIDs are not consistent """
+    @unittest.expectedFailure
     def test_type_BrawlhallaID_field(self):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
         self.assertEqual("200", player1.BrawlhallaID)  # Fail
@@ -41,18 +45,20 @@ class PlayerRegistryTest(TestCase):
             player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
             self.assertEqual(111, player1.BrawlhallaID)  # Pass
 
-    """This function tests the SmashggName field of the PlayerRegistry table. Two new player objects are created with 
+    """This function tests error SmashggName field of the PlayerRegistry table. Two new player objects are created with 
            different region, BrawlHallaID and SmashggName. This function asserts if the 
            'SmashggName' field of same object matches. """
+    @unittest.expectedFailure
     def test_SmashggName_field(self):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
         player2 = Player_Registry.objects.create(Region="South America", BrawlhallaID=101, SmashggName="test1")
         self.assertIs(player1, player2)
 
 
-    """This function tests the SmashggName field of the PlayerRegistry table. Two new player objects are created with 
+    """This function tests error in SmashggName field of the PlayerRegistry table. Two new player objects are created with 
         different region and BrawlHalla ID but same SmashggName. Since SmashggName is primary key, it should not allow 
         creation of two objects with same SmashggName. As expected, this test raises integrity error."""
+    @unittest.expectedFailure
     def test_integrityError_SmashggName_field(self):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
         player2 = Player_Registry.objects.create(Region="South America", BrawlhallaID=100, SmashggName="test")
@@ -75,9 +81,11 @@ class OfficialEventsTest(TestCase):
         event1 = Official_1_Events.objects.get(EventName="October Championship")
         self.assertEqual('October Championship', event1.EventName)
 
+    # This function tests the possible error on obtaining the eventName from OfficialEvents.
     # This functions tries to get the object created from setUpTestData using get method.
     # However, the function gives "object does not exist error" because with get method it is trying to
     # access something that has not been created at all.
+    @unittest.expectedFailure
     def test_objectError_eventName_field(self):
         event2 = Official_1_Events.objects.get(EventName="November Championship")
 
@@ -96,7 +104,7 @@ creates test_PowerRank_field_0 and test_PowerRank_field_1 as the function to per
 class PlacementsTest(TestCase):
     @parameterized.expand([
         (1, 1),
-        (5, 1)  # This should fail.
+        (5, 5)
     ])
     # This function tests the PowerRank field of Placement_1 table. It creates an object of table with the
     # given input PowerRank
@@ -104,3 +112,21 @@ class PlacementsTest(TestCase):
     def test_PowerRank_field(self, input, expected):
         rank = Placements_1(PowerRank=input)
         self.assertEqual(rank.getPowerRank(), expected)
+
+"""
+This class performs the parameterized test to test for error for one of the attributes of Placement_1 table in database. 
+It uses @parameter.expand to take in array of tuples of input and output. It creates a new function for each 
+tuple to check the input and output. For example: there are two tuples in array. So, @parameterized.expand
+creates test_Placement_field_0 and test_Placement_field_1 as the function to perform tests."""
+class PlacementsTestFailure(TestCase):
+    @parameterized.expand([
+        (2, 1),
+        (1, 5)
+    ])
+    # This function tests the PowerRank field of Placement_1 table. It creates an object of table with the
+    # given input PowerRank
+    # and then uses self.assertEqual to check if
+    @unittest.expectedFailure
+    def test_Placement_field(self, input, expected):
+        rank = Placements_1(Placement=input)
+        self.assertEqual(rank.getPlacement(), expected)
