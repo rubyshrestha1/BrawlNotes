@@ -43,6 +43,14 @@ class Placements_1(models.Model):
     #   player names.
     Losses = models.CharField(max_length=100)
 
+    # This function returns the PowerRank of given object.
+    def getPowerRank(self):
+        return self.PowerRank
+
+    # This function returns the Placement of given object.
+    def getPlacement(self):
+        return self.Placement
+
 #This class reports the characters and the frequency that the player chose them
 
 
