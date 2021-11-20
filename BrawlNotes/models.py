@@ -1,8 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 
-#####THIS IS A TESTALKSJDLAKJDALSKD
-
 # Create your models here.
 #This class holds the player's individual placement in 1v1 at each official tournament.
 #   It includes a year attribute for expansion into previous and future years.
@@ -51,7 +49,7 @@ class Placements_1(models.Model):
     def getPlacement(self):
         return self.Placement
 
-#This class reports the characters and the frequency that the player chose them
+
 
 
 
