@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DEBUG', 'False') != 'False'
 ALLOWED_HOSTS = [
     '127.0.0.1', 'localhost',
     # Change the below line to '<YOUR_HEROKU_APP>.herokuapp.com'
-    'cmps-453-project-template.herokuapp.com'  # comment this line
+    'cmps-453-fall-2021-team-m.herokuapp.com' 
 ]
 
 
