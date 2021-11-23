@@ -1,0 +1,279 @@
+[1mdiff --git a/BrawlNotes/admin.py b/BrawlNotes/admin.py[m
+[1mindex a2808ad..cd83042 100644[m
+[1m--- a/BrawlNotes/admin.py[m
+[1m+++ b/BrawlNotes/admin.py[m
+[36m@@ -6,3 +6,6 @@[m [mfrom .models import Placements_1, Player_Registry, Official_1_Events[m
+ admin.site.register(Placements_1)[m
+ admin.site.register(Player_Registry)[m
+ admin.site.register(Official_1_Events)[m
+[41m+[m
+[41m+[m
+[41m+[m
+[1mdiff --git a/BrawlNotes/models.py b/BrawlNotes/models.py[m
+[1mindex 273709e..4f3fb5b 100644[m
+[1m--- a/BrawlNotes/models.py[m
+[1m+++ b/BrawlNotes/models.py[m
+[36m@@ -1,19 +1,20 @@[m
+ from django.db import models[m
+ from django.db.models.deletion import CASCADE[m
+ [m
+[32m+[m
+ # Create your models here.[m
+[31m-#This class holds the player's individual placement in 1v1 at each official tournament.[m
+[32m+[m[32m# This class holds the player's individual placement in 1v1 at each official tournament.[m
+ #   It includes a year attribute for expansion into previous and future years.[m
+ class Placements_1(models.Model):[m
+[31m-    #This field will hold the year for the event[m
+[32m+[m[32m    # This field will hold the year for the event[m
+     #   This is included for future expansion into previous and future years[m
+     #   beyond 2021.[m
+     Year = models.IntegerField()[m
+[31m-    #Enum of regions to choose from that limits scope of options[m
+[32m+[m[32m    # Enum of regions to choose from that limits scope of options[m
+     #   This includes other regions for expansion beyond North American[m
+     #   players after proof of concept.[m
+     REGIONS = ([m
+[31m-        #Regions are AUS(Australia), SEA(Southeast Asia), NA(North America)[m
+[32m+[m[32m        # Regions are AUS(Australia), SEA(Southeast Asia), NA(North America)[m
+         #   EU(Europe), SA(South America)[m
+         ('SEA', 'Southeast Asia'),[m
+         ('AUS', 'Australia'),[m
+[36m@@ -22,20 +23,20 @@[m [mclass Placements_1(models.Model):[m
+         ('SA', 'South America'),[m
+     )[m
+     Region = models.CharField(max_length=3, choices=REGIONS)[m
+[31m-    #Listed account name from Smash.gg that hosts the bracket of players.[m
+[32m+[m[32m    # Listed account name from Smash.gg that hosts the bracket of players.[m
+     #   50 characters should hold almost every name.[m
+     #   This is a primary key so the field is set to True[m
+     SmashggName = models.ForeignKey('Player_Registry', on_delete=CASCADE)[m
+[31m-    #This holds the power rank for a given player[m
+[32m+[m[32m    # This holds the power rank for a given player[m
+     PowerRank = models.IntegerField()[m
+[31m-    #This is a foreign key referring to the Official_1_Events table[m
+[32m+[m[32m    # This is a foreign key referring to the Official_1_Events table[m
+     #   that holds the official names for each event[m
+[31m-    EventName = models.ForeignKey('Official_1_Events', on_delete=models.CASCADE)[m
+[31m-    #This contains the placement of this player for the corresponding event[m
+[32m+[m[32m    EventName = models.ForeignKey('Official_1_Events', on_delete=CASCADE)[m
+[32m+[m[32m    # This contains the placement of this player for the corresponding event[m
+     #   in the previous attribute. It is important to note when a player does not[m
+     #   compete in an event. This will be represented by "N/A."[m
+     Placement = models.CharField(max_length=7)[m
+[31m-    #This contains the player's opponents that they lost to in the event.[m
+[32m+[m[32m    # This contains the player's opponents that they lost to in the event.[m
+     #   The format will be "Player1/Player2" since SQLite3 does not have an[m
+     #   ArrayField type to represent a tuple. The / is a delimiter between[m
+     #   player names.[m
+[36m@@ -50,17 +51,14 @@[m [mclass Placements_1(models.Model):[m
+         return self.Placement[m
+ [m
+ [m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-#This class acts as the player registry to link their Smashgg names on the bracket[m
+[32m+[m[32m# This class acts as the player registry to link their Smashgg names on the bracket[m
+ #   to their Bralwhalla ID in game and on stat website Corehalla.com[m
+ class Player_Registry(models.Model):[m
+[31m-    #Enum of regions to choose from that limits scope of options[m
+[32m+[m[32m    # Enum of regions to choose from that limits scope of options[m
+     #   This includes other regions for expansion beyond North American[m
+     #   players after proof of concept.[m
+     REGIONS = ([m
+[31m-        #Regions are AUS(Australia), SEA(Southeast Asia), NA(North America)[m
+[32m+[m[32m        # Regions are AUS(Australia), SEA(Southeast Asia), NA(North America)[m
+         #   EU(Europe), SA(South America)[m
+         ('SEA', 'Southeast Asia'),[m
+         ('AUS', 'Australia'),[m
+[36m@@ -69,28 +67,30 @@[m [mclass Player_Registry(models.Model):[m
+         ('SA', 'South America'),[m
+     )[m
+     Region = models.CharField(max_length=3, choices=REGIONS)[m
+[31m-    #This field will contain the player's in-game Brawlhalla ID[m
+[32m+[m[32m    # This field will contain the player's in-game Brawlhalla ID[m
+     #   This will assist in finding the player's details on Corehalla.com[m
+     BrawlhallaID = models.IntegerField()[m
+[31m-    #This will contain the player's bracket name on Smashgg and serve[m
+[32m+[m[32m    # This will contain the player's bracket name on Smashgg and serve[m
+     #   to match their Brawlhalla ID with their Smashgg name.[m
+     SmashggName = models.CharField(max_length=50, primary_key=True)[m
+[32m+[m
+     #[m
+     def __str__(self):[m
+         return self.SmashggName[m
+ [m
+[31m-#This class holds the year, region, and name of every official Bralwhalla[m
+[32m+[m
+[32m+[m[32m# This class holds the year, region, and name of every official Bralwhalla[m
+ #   tournament in a given year[m
+ class Official_1_Events(models.Model):[m
+[31m-    #This field will hold the year for the event[m
+[32m+[m[32m    # This field will hold the year for the event[m
+     #   This is included for future expansion into previous and future years[m
+     #   beyond 2021.[m
+     Year = models.IntegerField()[m
+[31m-    #Enum of regions to choose from that limits scope of options[m
+[32m+[m[32m    # Enum of regions to choose from that limits scope of options[m
+     #   This includes other regions for expansion beyond North American[m
+     #   players after proof of concept.[m
+     REGIONS = ([m
+[31m-        #Regions are AUS(Australia), SEA(Southeast Asia), NA(North America)[m
+[32m+[m[32m        # Regions are AUS(Australia), SEA(Southeast Asia), NA(North America)[m
+         #   EU(Europe), SA(South America)[m
+         ('SEA', 'Southeast Asia'),[m
+         ('AUS', 'Australia'),[m
+[36m@@ -100,4 +100,3 @@[m [mclass Official_1_Events(models.Model):[m
+     )[m
+     Region = models.CharField(max_length=3, choices=REGIONS)[m
+     EventName = models.CharField(max_length=100, primary_key=True)[m
+[31m-[m
+[1mdiff --git a/BrawlNotes/urls.py b/BrawlNotes/urls.py[m
+[1mindex cad2ee5..f2d1e89 100644[m
+[1m--- a/BrawlNotes/urls.py[m
+[1m+++ b/BrawlNotes/urls.py[m
+[36m@@ -1,10 +1,16 @@[m
+[31m-from django.urls import path[m
+[32m+[m[32mfrom django.urls import path, reverse_lazy[m
+ from . import views[m
+ [m
+[32m+[m[32mfrom .models import *[m
+[32m+[m
+[32m+[m[32mapp_name = 'BrawlNotes'[m
+ urlpatterns = [[m
+[31m-    path('', views.index, name='index'),[m
+[32m+[m[32m    path('add-player/', views.PlayerAddView.as_view(), name = "BrawlNotes-add-player"),[m
+[32m+[m[32m    path('add-placement/', views.PlacementAddView.as_view(), name = "BrawlNotes-add-placement"),[m
+[32m+[m[32m    path('add-event/', views.EventAddView.as_view(), name = "BrawlNotes-add-event"),[m
+[32m+[m[32m    path('search-placement/', views.placementDetails, name = "BrawlNotes-search-placement"),[m
+[32m+[m[32m    path('index-events/', views.IndexViewEvents.as_view(), name='BrawlNotes-index-events'),[m
+[32m+[m[32m    path('index-players/', views.IndexViewPlayers.as_view(), name='BrawlNotes-index-players'),[m
+[32m+[m[32m   # path('<str:pk>/', views.DetailView.as_view(), name='detail'),[m
+ [m
+ ][m
+[31m-[m
+[31m-[m
+[31m-[m
+[1mdiff --git a/BrawlNotes/views.py b/BrawlNotes/views.py[m
+[1mindex 6263614..8bfe382 100644[m
+[1m--- a/BrawlNotes/views.py[m
+[1m+++ b/BrawlNotes/views.py[m
+[36m@@ -1,12 +1,54 @@[m
+ from django.shortcuts import render[m
+ from django.http import HttpResponse[m
+[31m-[m
+[32m+[m[32mfrom django.urls import reverse_lazy[m
+ from django.views import generic[m
+ [m
+ from .models import Player_Registry, Official_1_Events, Placements_1[m
+ [m
+[31m-def index(request):[m
+[31m-    return HttpResponse("Hello. You're at the BrawlNotes index.")[m
+[32m+[m[32m"""This class is used to create PlayerAddView.This view inherits a generic View type of CreateView[m
+[32m+[m[32m in order to add new players to the model Player_Registry in database."""[m
+[32m+[m[32mclass PlayerAddView(generic.CreateView):[m
+[32m+[m[32m    model = Player_Registry[m
+[32m+[m[32m    fields = "__all__"[m
+[32m+[m[32m    success_url = reverse_lazy("BrawlNotes:BrawlNotes-add-player")[m
+[32m+[m
+[32m+[m[32m"""This class is used to create PlacementAddView.This view inherits a generic View type of CreateView[m
+[32m+[m[32m in order to add new placement to the model Placements_1 in database."""[m
+[32m+[m[32mclass PlacementAddView(generic.CreateView):[m
+[32m+[m[32m    model = Placements_1[m
+[32m+[m[32m    fields = "__all__"[m
+[32m+[m[32m    success_url = reverse_lazy("BrawlNotes:BrawlNotes-add-placement")[m
+[32m+[m
+[32m+[m[32m"""This class is used to create EventAddView.This view inherits a generic View type of CreateView[m
+[32m+[m[32m in order to add new events to the model Official_1_Events in database."""[m
+[32m+[m[32mclass EventAddView(generic.CreateView):[m
+[32m+[m[32m    model = Official_1_Events[m
+[32m+[m[32m    fields = "__all__"[m
+[32m+[m[32m    success_url = reverse_lazy("BrawlNotes:BrawlNotes-add-event")[m
+[32m+[m
+[32m+[m[32m"""This function defines the view to display the data in Placements_1 table. It takes in request from user and[m
+[32m+[m[32mgets all objects of table as result. Then the results are rendered in specified template 'BrawlNotes/search-placement.html'.[m
+[32m+[m[32mThe third argument is context.It is the dictionary of values to add to the template context."""[m
+[32m+[m[32mdef placementDetails(request):[m
+[32m+[m[32m    result = Placements_1.objects.all()[m
+[32m+[m[32m    return render(request, 'BrawlNotes/search-placement.html', {"Placements_1" :result} )[m
+[32m+[m
+[32m+[m[32m"""This class inherits a generic view of type ListView to display the data of Official_1_Events model"""[m
+[32m+[m[32mclass IndexViewEvents(generic.ListView):[m
+[32m+[m[32m    model = Official_1_Events[m
+[32m+[m[32m    template_name = 'BrawlNotes/indexEvent.html'[m
+[32m+[m[32m    context_object_name = 'event_list'[m
+[32m+[m[32m    def get_context_data(self, **kwargs):[m
+[32m+[m[32m        context = super().get_context_data(**kwargs)[m
+[32m+[m[32m        return context[m
+ [m
+[32m+[m[32m"""This class inherits a generic view of type ListView to display the data of Player_Registry model"""[m
+[32m+[m[32mclass IndexViewPlayers(generic.ListView):[m
+[32m+[m[32m    model = Player_Registry[m
+[32m+[m[32m    template_name = 'BrawlNotes/indexPlayer.html'[m
+[32m+[m[32m    context_object_name = 'player_list'[m
+[32m+[m[32m    def get_context_data(self, **kwargs):[m
+[32m+[m[32m        context = super().get_context_data(**kwargs)[m
+[32m+[m[32m        return context[m
+ [m
+ [m
+[1mdiff --git a/templates/home.html b/templates/home.html[m
+[1mindex 51fa46e..a9de5c0 100644[m
+[1m--- a/templates/home.html[m
+[1m+++ b/templates/home.html[m
+[36m@@ -7,7 +7,7 @@[m
+         <div class="container">[m
+             <h1 class="display-3">BrawlNotes</h1>[m
+             <p>A statistic database system of the BrawlHalla players.</p>[m
+[31m-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>[m
+[32m+[m[32m            <{% comment %}p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>{% endcomment %}[m
+         </div>[m
+     </div>[m
+ [m
+[36m@@ -15,25 +15,19 @@[m
+         <!-- Example row of columns -->[m
+         <div class="row">[m
+             <div class="col-md-4">[m
+[31m-                <h2>Heading</h2>[m
+[31m-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor[m
+[31m-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna[m
+[31m-                    mollis euismod. Donec sed odio dui. </p>[m
+[31m-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>[m
+[32m+[m[32m                <h2>Events</h2>[m
+[32m+[m[32m                <p>Different BrawlHalla championships conducted in 2021</p>[m
+[32m+[m[32m                <p><a class="btn btn-secondary" href="http://127.0.0.1:8000/BrawlNotes/index-events/" target=" _blank" role="button">View details &raquo;</a></p>[m
+             </div>[m
+             <div class="col-md-4">[m
+[31m-                <h2>Heading</h2>[m
+[31m-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor[m
+[31m-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna[m
+[31m-                    mollis euismod. Donec sed odio dui. </p>[m
+[31m-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>[m
+[32m+[m[32m                <h2>Players</h2>[m
+[32m+[m[32m                <p>List of players who have competed in BrawlHalla games in 2021 </p>[m
+[32m+[m[32m                <p><a class="btn btn-secondary" href="http://127.0.0.1:8000/BrawlNotes/index-players/ " target=" _blank"role="button">View details &raquo;</a></p>[m
+             </div>[m
+             <div class="col-md-4">[m
+[31m-                <h2>Heading</h2>[m
+[31m-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula[m
+[31m-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,[m
+[31m-                    ut fermentum massa justo sit amet risus.</p>[m
+[31m-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>[m
+[32m+[m[32m                <h2>Placements</h2>[m
+[32m+[m[32m                <p> Information on placements of each players and filtering them</p>[m
+[32m+[m[32m                <p><a class="btn btn-secondary" href="http://127.0.0.1:8000/BrawlNotes/search-placement/" target = "_blank" role="button">View details &raquo;</a></p>[m
+             </div>[m
+         </div>[m
+         <hr>[m
+[1mdiff --git a/templates/team.html b/templates/team.html[m
+[1mindex 0dca4ef..4ab61af 100644[m
+[1m--- a/templates/team.html[m
+[1m+++ b/templates/team.html[m
+[36m@@ -42,7 +42,7 @@[m
+                 <div class="box-content">[m
+                     <h3 class="title">Ruby Shrestha</h3>[m
+                     <ul class="icon">[m
+[31m-                        <li><a href="https://www.linkedin.com/in/rubyshrestha1/" target=" "_blank"><i class="fab fa-linkedin"></i></a></li>[m
+[32m+[m[32m                        <li><a href="https://www.linkedin.com/in/rubyshrestha1/" target=" _blank"><i class="fab fa-linkedin"></i></a></li>[m
+                         <li><a href="https://gitlab.com/rubyshrestha", target="_blank"><i class="fab fa-gitlab"></i></a></li>[m
+                     </ul>[m
+                 </div>[m

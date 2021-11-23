@@ -1,0 +1,9 @@
+{% comment %}
+This template displays a form for user to add new BrawlHalla events to Official_1_Events table.
+{% endcomment %}
+<h2>Please provide following information</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type = "submit" value ="Submit">
+</form>

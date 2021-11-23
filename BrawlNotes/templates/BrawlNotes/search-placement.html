@@ -1,0 +1,108 @@
+{% comment %}
+This template enables user to view the data in Placements_1 table and filter it according to
+SmashggName or EventName through dropdown option. It uses javascript to fulfill the logic of filtering
+through dropdown.
+{% endcomment %}
+
+
+<title>Search Placement</title>
+{% block content %}
+<div class="container", style ="float:left; display:inline-block">
+  <center>
+      <hr>
+{% comment %} Using javascript to display the filtered records{% endcomment %}
+  <script type ="text/javascript">
+      {% comment %}Function to search placements based on player's SmashggName {% endcomment %}
+      function searchPlayer() {
+          var input,  table, tr, td, filter, displayData;
+          input = document.getElementById("searchPlayer");
+          filter = input.value
+          table = document.getElementById("table1");
+          tr = table.getElementsByTagName("tr");
+          for (i =0; i<tr.length; i++){
+              td = tr[i].getElementsByTagName("td")[1];
+              if (td ){
+                  displayData =td.innerText;
+                  if (displayData.indexOf(filter)>-1){
+                      tr[i].style.display = "";
+                  }
+                  else{
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+      }
+      {% comment %}Function to search placements based on Event played {% endcomment %}
+      function searchEvent() {
+          var input,  table, tr, td, filter, displayData;
+          input = document.getElementById("searchEvent");
+          filter = input.value
+          table = document.getElementById("table1");
+          tr = table.getElementsByTagName("tr");
+          for (i =0; i<tr.length; i++){
+              td = tr[i].getElementsByTagName("td")[3];
+              if (td ){
+                  displayData =td.innerText;
+                  if (displayData.indexOf(filter)>-1){
+                      tr[i].style.display = "";
+                  }
+                  else{
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+          }
+      function resetTable(){
+          location.reload();
+      }
+  </script>
+
+  {% comment %}Dropdown option to choose players{% endcomment %}
+  <select id = "searchPlayer" onclick="searchPlayer();">
+         <option disabled = "true" selected>--Select Player Name--</option>
+         {% for player in Placements_1 %}
+             <option value ="{{ player.SmashggName }}">{{ player.SmashggName }}</option>
+      {% endfor %}
+     </select>
+  {% comment %}Dropdown option to choose events{% endcomment %}
+  <select id = "searchEvent" onclick="searchEvent();">
+        <option disabled = "true" selected>--Select Event--</option>
+        <option value ="Official_1_Events object (Winter Championship)">Winter Championship</option>
+        <option value ="Official_1_Events object (Summer Championship)">Summer Championship</option>
+        <option value ="Official_1_Events object (Spring Championship)">Spring Championship</option>
+        <option value ="Official_1_Events object (Autumn Championship)">Autumn Championship</option>
+        <option value ="Official_1_Events object (Parsec Invitation)">Parsec Invitation</option>
+        <option value ="Official_1_Events object (Mammoth Invitation)">Mammoth Invitation/option>
+ </select>
+
+  {% comment %}Button to reset the table and get unfiltered results{% endcomment %}
+  <input type="button" value = "Reset Table" onclick="resetTable();">
+  <br/><br>
+
+  {% comment %}Creating table to display the data in tabular format{% endcomment %}
+    <table border="1" id = "table1" style="width: 100%">
+        {% comment %}Adding column headers{% endcomment %}
+        <tr align ="center">
+          <th style="width: 10%" >Year</th>
+          <th style="width: 15%">SmashggName</th>
+          <th style="width: 10%">PowerRank</th>
+          <th style="width: 35%">Event Name</th>
+          <th style="width: 10%"> Placement</th>
+          <th style="width: 15%">Losses</th>
+        </tr>
+
+       {% comment %} Looping over the data in Placements_1 to get each row{% endcomment %}
+        {% for placement in Placements_1 %}
+            <tr align ="center">
+              <td>{{ placement.Year }}</td>
+              <td>{{ placement.SmashggName }}</td>
+              <td>{{placement.PowerRank }}</td>
+              <td>{{placement.EventName }}</td>
+              <td>{{ placement.Placement }}</td>
+              <td>{{ placement.Losses }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</center>
+</div>
+{% endblock %}
