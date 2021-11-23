@@ -1,0 +1,38 @@
+{% comment %}
+This template displays all the current players in Player_Registry table.
+{% endcomment %}
+
+<head>
+    <title>List of Players</title>
+    <style>
+    ol {
+        column-count: 3;
+        list-style-type: decimal;
+    }
+</style>
+</head>
+
+
+{% block content %}
+
+<h1 align="center">List of Players</h1>
+    <hr>
+{%  if player_list %}
+    <ol>
+        {% for player in player_list %}
+        <li >{{player.SmashggName }}</li>
+            <ul>
+                <li>BrawlHalla ID: {{ player.BrawlhallaID }}</li>
+                <li>Region: {{ player.Region }}</li>
+
+            </ul>
+            <br>
+    {%  endfor %}
+    </ol>
+{% else %}
+    <p> No player is available</p>
+{% endif %}
+
+
+
+{% endblock %}

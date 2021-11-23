@@ -1,0 +1,38 @@
+{% comment %}
+This template displays all the current events in Official_1_Events table.
+{% endcomment %}
+<head>
+    <title>List of Events</title>
+    <style>
+    ol {
+        column-count: 3;
+        column-rule:double 2px #040404;
+
+        list-style-type: none;
+    }
+</style>
+</head>
+
+
+{% block content %}
+    <br>
+<h1 align="center">List of Events</h1>
+    <hr>
+{%  if event_list %}
+    <ol>
+        {% for event in event_list %}
+        <li >{{event.EventName }}</li>
+            <ul>
+                <li>Region: {{ event.Region }}</li>
+                <li>Year: {{ event.Year }}</li>
+            </ul>
+            <br>
+    {%  endfor %}
+    </ol>
+{% else %}
+    <p> No event is available</p>
+{% endif %}
+
+
+
+{% endblock %}
