@@ -36,14 +36,14 @@ class PlayerRegistryTest(TestCase):
     @unittest.expectedFailure
     def test_type_BrawlhallaID_field(self):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
-        self.assertEqual("200", player1.BrawlhallaID)  # Fail
+        self.assertEqual("200", player1.BrawlhallaID, msg="BrawlhallaID is not the same")  # Fail
 
     """This function tests the region field of the PlayerRegistry table. A new player objects is created with 
         NorthAmerica, 111 and test  as Region, BrawlhallaID and SmashggName respectively.
          The function then asserts if the object's 'BrawlHallaID' field matches with the given ID value. """
     def test_BrawlhallaID_field(self):
             player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
-            self.assertEqual(111, player1.BrawlhallaID)  # Pass
+            self.assertEqual(111, player1.BrawlhallaID, msg="BrawlhallaID is not the same")  # Pass
 
     """This function tests error SmashggName field of the PlayerRegistry table. Two new player objects are created with 
            different region, BrawlHallaID and SmashggName. This function asserts if the 
@@ -52,7 +52,7 @@ class PlayerRegistryTest(TestCase):
     def test_SmashggName_field(self):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
         player2 = Player_Registry.objects.create(Region="South America", BrawlhallaID=101, SmashggName="test1")
-        self.assertIs(player1, player2)
+        self.assertIs(player1, player2, msg="They do not refer to the same object") # Fail
 
 
     """This function tests error in SmashggName field of the PlayerRegistry table. Two new player objects are created with 
@@ -62,6 +62,19 @@ class PlayerRegistryTest(TestCase):
     def test_integrityError_SmashggName_field(self):
         player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName="test")
         player2 = Player_Registry.objects.create(Region="South America", BrawlhallaID=100, SmashggName="test")
+
+    '''This function tests that the maximum length for the CharField representing a player's SmashggName is 50. A loop is traversed
+        more than 50 times and each time a character is appended to a string that will eventually be greater than length 50. This
+        string is then used as the SmashggName for the newly created player object. Because the CharField in the Player_Registry table
+        has a max length of 50, it should not allow the player object to be created. As expected this test raises an error'''
+    @unittest.expectedFailure
+    def test_SmashggName_Length(self):
+        name = ""
+        for i in range(52):
+            name+=i
+        player1 = Player_Registry.objects.create(Region="North America", BrawlhallaID=111, SmashggName=name)
+
+
 
 
 
@@ -93,8 +106,18 @@ class OfficialEventsTest(TestCase):
     # This functions gets the object created from setUpTestData and checks if year matches the given year.
     def test_Year_field(self):
         event1 = Official_1_Events.objects.get(Year=2021)
-        self.assertEqual(2021, event1.Year)
+        self.assertEqual(2021, event1.Year, msg="The year is not equal to 2021")
 
+    '''This function tests that the maximum length for the CharField representing an event's name is 100. A loop is traversed
+        more than 100 times and each time a character is appended to a string that will eventually be greater than length 100. This
+        string is then used as the EventName for the newly created event object. Because the CharField in the Official_1_Events table
+        has a max length of 100, it should not allow the player object to be created. As expected this test raises an error'''
+    @unittest.expectedFailure
+    def test_EventName_length(self):
+        name = ""
+        for i in range(103):
+            name+=i
+        eventSample = Official_1_Events.objects.create(Year=2021, Region="North America", EventName=name)
 
 """
 This class performs the parameterized test for one of the attributes of Placement_1 table in database. 
@@ -130,3 +153,15 @@ class PlacementsTestFailure(TestCase):
     def test_Placement_field(self, input, expected):
         rank = Placements_1(Placement=input)
         self.assertEqual(rank.getPlacement(), expected)
+
+
+    '''This function tests that the maximum length for the CharField representing a player's losses in an event is 100. A loop is traversed
+        more than 100 times and each time a character is appended to a string that will eventually be greater than length 100. This
+        string is then used to reporesent the player's losses for the newly created placement object. Because the CharField in the Placements_1 table
+        has a max length of 100, it should not allow the player object to be created. As expected this test raises an error'''
+    @unittest.expectedFailure
+    def test_Losses_length(self):
+        loss = ""
+        for i in range(103):
+            loss+=i
+        place = Placements_1.objects.create(Year=2021, Region="North America", SmashggName="player", PowerRank=4, EventName="Autumn Championship", Placement="18", Losses=loss)
