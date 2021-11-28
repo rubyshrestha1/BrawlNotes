@@ -1,17 +1,21 @@
 {% comment %}
 This template displays all the current events in Official_1_Events table.
 {% endcomment %}
+{% load static %}
 <head>
+    <link rel='icon' href='{% static 'BrawlNotes/favicongood.ico' %}' type='image/x-icon' sizes="16x16" />
     <title>List of Events</title>
     <style>
     ol {
-        column-count: 3;
+        column-count: 1;
         column-rule:double 2px #040404;
 
         list-style-type: none;
     }
 </style>
 </head>
+<body style="background-color: #8BDBE5;">
+</body>
 
 
 {% block content %}
@@ -21,9 +25,24 @@ This template displays all the current events in Official_1_Events table.
 {%  if event_list %}
     <ol>
         {% for event in event_list %}
-        <li >{{event.EventName }}</li>
+        <li ><b>{{event.EventName }}</b></li>
             <ul>
-                <li>Region: {{ event.Region }}</li>
+                {% if event.EventName == "Winter Championship"%}
+                <li><a href="https://smash.gg/tournament/north-america-winter-championship-2021/event/brawlhalla-championship-1v1/standings">Smashgg Link</a></li>
+                {% elif event.EventName == "Spring Championship"%}
+                <li><a href="https://smash.gg/tournament/north-america-spring-championship-2021/event/brawlhalla-championship-1v1/standings">Smashgg Link</a></l>
+                {% elif event.EventName == "Parsec Invitational"%}
+                <li><a href="https://smash.gg/tournament/north-america-parsec-invitational/event/brawlhalla-championship-1v1/standings">Smashgg Link</a></l>
+                {% elif event.EventName == "Summer Championship"%}
+                <li><a href="https://smash.gg/tournament/north-america-summer-championship-2021/event/brawlhalla-championship-1v1/standings">Smashgg Link</a></l>
+                {% elif event.EventName == "Mammoth Invitational"%}
+                <li><a href="https://smash.gg/tournament/north-america-mammoth-invitational/event/brawlhalla-championship-1v1/standings">Smashgg Link</a></l>
+                {% elif event.EventName == "Autumn Championship"%}
+                <li><a href="https://smash.gg/tournament/north-america-autumn-championship-2021/event/brawlhalla-championship-1v1/standings">Smashgg Link</a></l>
+                {% endif %}
+                {% if event.Region == "NA" %}
+                <li>Region: <img src="https://cdn.discordapp.com/attachments/410715582955126784/914640533983469588/flag.png"></li>
+                {%endif%}
                 <li>Year: {{ event.Year }}</li>
             </ul>
             <br>

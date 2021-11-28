@@ -4,11 +4,11 @@
 <html lang="en">
 
 <head>
-    <link rel='icon' href='favicon.ico' type='image/x-icon' sizes="16x16" />
+    <link rel='icon' href='{% static 'BrawlNotes/favicongood.ico' %}' type='image/x-icon' sizes="16x16" />
     <meta charset="utf-8">
-    <title>Django Project Template</title>
+    <title>BrawlNotes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Django Project Template">
+    <meta name="description" content="BrawlNotes">
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
@@ -20,7 +20,7 @@
     {% block style %} {% endblock %}
 </head>
 
-<body>
+<body style="background-color: #8BDBE5">
     {% include "navbar.html" %}
     <div class="container">
         <h1 align="center">{% block title %}{% endblock %}</h1>
@@ -28,7 +28,7 @@
             {% block content %}{% endblock %}
         </div>
     </div>
-    {% include "footer.html" %}
+    <!-- {% include "footer.html" %} -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>
