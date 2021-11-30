@@ -1,3 +1,4 @@
+{% extends "base_generic.html" %}
 {% comment %}
 This template displays all the current players in Player_Registry table.
 {% endcomment %}
@@ -5,76 +6,84 @@ This template displays all the current players in Player_Registry table.
 
 <head>
     <link rel='icon' href='{% static 'BrawlNotes/favicongood.ico' %}' type='image/x-icon' sizes="16x16" />
-    <title>List of Players</title>
+ >
     <style>
     ol {
         column-count: 1;
         list-style-type: decimal;
     }
+
+
 </style>
 </head>
-<body style="background-color: #8BDBE5;">
-</body>
+{% block title %} List of Players {% endblock%}
 
+{% block titleh1 %} List of Players <hr style = "background-color: #ffefef;  height: 1px;"> {% endblock %}
 
 {% block content %}
+    <main role = "main">
+        <div class="container">
+        <h3>North America</h3>
+            <div class="row">
+                {%  if player_list %}
+                    <ol>
+                        {% for player in player_list %}
 
-<h1 align="center">List of Players</h1>
-    
-    <hr>
-    <h2>North America</h2>
-{%  if player_list %}
-    <ol>
-        {% for player in player_list %}
-        
-        <li><b>{{ player.SmashggName }}</b></li>
-            <ul>
-                {% if player.SmashggName == "Sandstorm" %}
-                <li><a href="https://smash.gg/user/44ffca14">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Boomie" %}
-                <li><a href="https://smash.gg/user/18838fb9">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Cody Travis" %}
-                <li><a href="https://smash.gg/user/4681cfdf">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Santy" %}
-                <li><a href="https://smash.gg/user/6b162fc8">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Phazon" %}
-                <li><a href="https://smash.gg/user/900010af">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Snowy" %}
-                <li><a href="https://smash.gg/user/800cabcb">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "STING RAY" %}
-                <li><a href="https://smash.gg/user/f035fb99">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "hardymj" %}
-                <li><a href="https://smash.gg/user/d30bad90">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Blaizzy" %}
-                <li><a href="https://smash.gg/user/a09db56d">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "megD" %}
-                <li><a href="https://smash.gg/user/b94b3e72">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "java" %}
-                <li><a href="https://smash.gg/user/4f0d0638">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Zinquer" %}
-                <li><a href="https://smash.gg/user/1f542877">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "pier" %}
-                <li><a href="https://smash.gg/user/6e9ed13a">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "ImLlama" %}
-                <li><a href="https://smash.gg/user/407ecd56">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Raydish" %}
-                <li><a href="https://smash.gg/user/dd38a8a8">Smashgg Profile</a></li>
-                {% elif player.SmashggName == "Pugsy" %}
-                <li><a href="https://smash.gg/user/9e8d0be3">Smashgg Profile</a></li>
+                        <li><b>{{ player.SmashggName }}</b></li>
+                            <ul>
+                                {% if player.SmashggName == "Sandstorm" %}
+                                <li><a href="https://smash.gg/user/44ffca14">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Boomie" %}
+                                <li><a href="https://smash.gg/user/18838fb9">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Cody Travis" %}
+                                <li><a href="https://smash.gg/user/4681cfdf">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Santy" %}
+                                <li><a href="https://smash.gg/user/6b162fc8">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Phazon" %}
+                                <li><a href="https://smash.gg/user/900010af">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Snowy" %}
+                                <li><a href="https://smash.gg/user/800cabcb">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "STING RAY" %}
+                                <li><a href="https://smash.gg/user/f035fb99">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "hardymj" %}
+                                <li><a href="https://smash.gg/user/d30bad90">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Blaizzy" %}
+                                <li><a href="https://smash.gg/user/a09db56d">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "megD" %}
+                                <li><a href="https://smash.gg/user/b94b3e72">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "java" %}
+                                <li><a href="https://smash.gg/user/4f0d0638">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Zinquer" %}
+                                <li><a href="https://smash.gg/user/1f542877">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "pier" %}
+                                <li><a href="https://smash.gg/user/6e9ed13a">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "ImLlama" %}
+                                <li><a href="https://smash.gg/user/407ecd56">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Raydish" %}
+                                <li><a href="https://smash.gg/user/dd38a8a8">Smashgg Profile</a></li>
+                                {% elif player.SmashggName == "Pugsy" %}
+                                <li><a href="https://smash.gg/user/9e8d0be3">Smashgg Profile</a></li>
+                                {% endif %}
+                                <li>Brawlhalla ID: {{ player.BrawlhallaID }}</li>
+                                {% if player.Region == "NA" %}
+                                <li>Region: <img src="https://cdn.discordapp.com/attachments/410715582955126784/914640533983469588/flag.png" align="middle"></li>
+                                {%endif%}
+
+                            </ul>
+                            <br>
+                    {%  endfor %}
+                    </ol>
+                {% else %}
+                    <p> No player is available</p>
                 {% endif %}
-                <li>Brawlhalla ID: {{ player.BrawlhallaID }}</li>
-                {% if player.Region == "NA" %}
-                <li>Region: <img src="https://cdn.discordapp.com/attachments/410715582955126784/914640533983469588/flag.png"></li>
-                {%endif%}
-
-            </ul>
-            <br>
-    {%  endfor %}
-    </ol>
-{% else %}
-    <p> No player is available</p>
-{% endif %}
+            </div>
+        </div>
+    </main>
 
 
 
 {% endblock %}
+
+
+
+

@@ -1,10 +1,135 @@
 import unittest
-
+import datetime
 from django.test import TestCase
 from .models import Player_Registry, Official_1_Events, Placements_1
 from parameterized import parameterized, parameterized_class
-from django.urls import reverse
+from django.urls import reverse,resolve
 from django.test import Client
+from .views import IndexViewEvents, placementDetails, IndexViewPlayers
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+
+"""This class tests the views of the system"""
+class TestView(TestCase):
+    """This function tests view IndexViewEvents.It creates the Client object and is used to test whether the status
+    code returned is 200. status code is 200 means that request has succeeded."""
+    def test_index_events_status_code(self):
+        client = Client()
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-events'))
+        self.assertEquals(response.status_code, 200)
+
+    """This function tests view IndexViewEvents.It creates the Client object and is used to test whether the template
+    used is input templates"""
+    def test_index_events_template_used(self):
+        client = Client()
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-events'))
+        self.assertTemplateUsed(response, 'BrawlNotes/indexEvent.html')
+
+    """This function tests adding new users. It instantiates get_user_model() that returns currently active user
+     model. Then custom object of that model is created. Finally object's email is tested against given email. """
+    def test_add_users(self):
+        user = get_user_model()
+        user1 = user.objects.create_user(email ="test@tester.com", password="qwerty12345", date_of_birth = datetime.date(2000,1,1))
+        self.assertEquals(user1.email, 'test@tester.com')
+
+    """This function tests view IndexViewPlayers.It creates the Client object and is used to test whether the status
+    code returned is 302. status code is 302 means that resource has been temporarily moved to another URL.
+    This status code is used as user is first required to log in to view the list of players."""
+    def test_index_players_status_code302(self):
+        client = Client()
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-players'))
+        self.assertEquals(response.status_code, 302)
+
+    """This function tests view IndexViewPlayers.It creates the Client object, instantiates get_user_model()
+    that returns currently active user model. Then custom object of that model is created. The created user is
+    logged into the system. Finally, status code of response is tested to check whether it is 200 (success)"""
+    def test_index_players_status_code200(self):
+        client = Client()
+        user = get_user_model()
+        user1 = user.objects.create_user(email ="test@tester.com", password="test12345", date_of_birth = datetime.date(2000,1,1))
+        login = client.login(email="test@tester.com", password="test12345")
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-players'))
+        self.assertEqual(response.status_code, 200)
+
+    """This function tests view IndexViewPlayers.It creates the Client object, instantiates get_user_model()
+    that returns currently active user model. Then custom object of that model is created. The created user is
+    logged into the system. Finally, the template used is tested against input templates"""
+    def test_index_players_template_used_pass(self):
+        client = Client()
+        user = get_user_model()
+        user1 = user.objects.create_user(email ="test@tester.com", password="test12345", date_of_birth = datetime.date(2000,1,1))
+        login = client.login(email="test@tester.com", password="test12345")
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-players'))
+        self.assertTemplateUsed(response, 'BrawlNotes/indexPlayer.html')
+
+    """This function tests view IndexViewPlayers.It creates the Client object, instantiates get_user_model()
+    that returns currently active user model. Then custom object of that model is created. The created user is
+    logged into the system. Finally, the template used is tested against input templates. This test is expected to fail
+    as incorrect template is provided as input"""
+    @unittest.expectedFailure
+    def test_index_players_template_used_fail(self):
+        client = Client()
+        user = get_user_model()
+        user1 = user.objects.create_user(email ="test@tester.com", password="test12345", date_of_birth = datetime.date(2000,1,1))
+        login = client.login(email="test@tester.com", password="test12345")
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-players'))
+        self.assertTemplateUsed(response, 'BrawlNotes/indexPlayers.html')
+
+    """This function tests view placementDetails.It creates the Client object and is used to test whether the status
+    code returned is 200, which should be failed test as user is required to first log in to be able to view the page.
+    response returns status code 302 which implies that resource has been temporarily moved to another URL (URL for user
+    to log in)."""
+    @unittest.expectedFailure
+    def test_search_placement_status_code200_fail(self):
+        client = Client()
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-players'))
+        self.assertEquals(response.status_code, 200)
+
+    """This function tests placementDetails.It creates the Client object and is used to test whether the status
+    code returned is 302. status code is 302 means that resource has been temporarily moved to another URL.
+    This status code is used as user is first required to log in to view the list of players."""
+    def test_search_placement_status_code302(self):
+        client = Client()
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-players'))
+        self.assertEquals(response.status_code, 302)
+
+    """This function tests placementDetails.It creates the Client object, instantiates get_user_model()
+    that returns currently active user model. Then custom object of that model is created. The created user is
+    logged into the system. Finally, status code of response is tested to check whether it is 200 (success) """
+    def test_search_placements_status_code200_pass(self):
+        client = Client()
+        user = get_user_model()
+        user1 = user.objects.create_user(email ="test@tester.com", password="test12345", date_of_birth = datetime.date(2000,1,1))
+        login = client.login(email="test@tester.com", password="test12345")
+        response = client.get(reverse('BrawlNotes:BrawlNotes-index-players'))
+        self.assertEquals(response.status_code, 200)
+        #self.assertTemplateUsed(response, 'BrawlNotes/indexPlayer.html')
+
+
+""" This class is for testing the urls of different views. url of views are retrieved through reverse function which
+is then compared with given input views to check whether they are same or not. """
+class TestUrls(TestCase):
+    """This function tests the url of view IndexViewEvents """
+    def test_url_indexEvent(self):
+        url = reverse('BrawlNotes:BrawlNotes-index-events')
+        self.assertEquals( resolve(url).func.view_class, IndexViewEvents)
+
+    """This function tests the url of view IndexViewEvents and is expected to fail as incorrect input view is provided """
+    @unittest.expectedFailure
+    def test_url_indexEvent_Fail(self):
+        url = reverse('BrawlNotes:BrawlNotes-index-events')
+        self.assertEquals( resolve(url).func.view_class, IndexViewEvent)
+
+    """This function tests the url of view IndexViewPlayers """
+    def test_url_indexPlayer(self):
+        url = reverse('BrawlNotes:BrawlNotes-index-players')
+        self.assertEquals( resolve(url).func.view_class, IndexViewPlayers)
+
+    """This function tests the url of view placementDetails """
+    def test_url_searchPlacement(self):
+        url = reverse('BrawlNotes:BrawlNotes-search-placement')
+        self.assertEquals( resolve(url).func, placementDetails)
+
 
 """
 This class is the test for Player_Registry table in database. It has three different functions to test three 
@@ -165,3 +290,6 @@ class PlacementsTestFailure(TestCase):
         for i in range(103):
             loss+=i
         place = Placements_1.objects.create(Year=2021, Region="North America", SmashggName="player", PowerRank=4, EventName="Autumn Championship", Placement="18", Losses=loss)
+
+
+

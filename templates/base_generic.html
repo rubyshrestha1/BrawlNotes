@@ -6,7 +6,7 @@
 <head>
     <link rel='icon' href='{% static 'BrawlNotes/favicongood.ico' %}' type='image/x-icon' sizes="16x16" />
     <meta charset="utf-8">
-    <title>BrawlNotes</title>
+    <title>{% block title %}BrawlNotes {%  endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="BrawlNotes">
     {# Load CSS and JavaScript #}
@@ -23,7 +23,8 @@
 <body style="background-color: #8BDBE5">
     {% include "navbar.html" %}
     <div class="container">
-        <h1 align="center">{% block title %}{% endblock %}</h1>
+        <h1 align="center">{% block titleh1 %}{% endblock %}</h1>
+
         <div class="row">
             {% block content %}{% endblock %}
         </div>
