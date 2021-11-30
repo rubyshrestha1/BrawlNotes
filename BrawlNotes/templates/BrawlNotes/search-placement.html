@@ -1,16 +1,22 @@
+{% extends "base_generic.html" %}
 {% comment %}
 This template enables user to view the data in Placements_1 table and filter it according to
 SmashggName or EventName through dropdown option. It uses javascript to fulfill the logic of filtering
 through dropdown.
 {% endcomment %}
+
 {% load static %}
 <head><link rel='icon' href='{% static 'BrawlNotes/favicongood.ico' %}' type='image/x-icon' sizes="16x16" /></head>
-<title>Search Placement</title>
+{% block title %}Search Placements{% endblock %}
+
+{% block titleh1 %}List of Placements{% endblock %}
+
 {% block content %}
-<h1 align="center">List of Placements</h1>
+<main role = "main">
 <div class="container", style ="float:left; display:inline-block; background-color: #8BDBE5;">
+        <div class="row">
   <center>
-      <hr>
+      <hr style="background-color: #ffefef;  height: 1px;">
 {% comment %} Using javascript to display the filtered records{% endcomment %}
   <script type ="text/javascript">
       {% comment %}Function to search placements based on player's SmashggName {% endcomment %}
@@ -82,7 +88,7 @@ through dropdown.
     <br/><br>
 
   {% comment %}Creating table to display the data in tabular format{% endcomment %}
-    <table border="1" id = "table1" style="width: 100%; background-color: #FFFFFF;">
+    <table border="1" id = "table1"  style="width: 100%; table-layout: fixed; background-color: #FFFFFF;">
         {% comment %}Adding column headers{% endcomment %}
         <tr align ="center">
           <th style="width: 10%" >Year</th>
@@ -107,6 +113,7 @@ through dropdown.
     </table>
 </center>
 </div>
-<body style="background-color: #8BDBE5;">
-</body>
+
+</div>
+</main>
 {% endblock %}

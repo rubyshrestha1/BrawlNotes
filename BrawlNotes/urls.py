@@ -11,6 +11,5 @@ urlpatterns = [
     path('search-placement/', views.placementDetails, name = "BrawlNotes-search-placement"),
     path('index-events/', views.IndexViewEvents.as_view(), name='BrawlNotes-index-events'),
     path('index-players/', views.IndexViewPlayers.as_view(), name='BrawlNotes-index-players'),
-   # path('<str:pk>/', views.DetailView.as_view(), name='detail'),
 
 ]
