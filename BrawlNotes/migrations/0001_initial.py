@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('SmashggName', models.CharField(max_length=50, primary_key=True, serialize=False)),
             ],
         ),
-       """  migrations.CreateModel(
+        migrations.CreateModel(
             name='Placements_1',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -40,6 +40,6 @@ class Migration(migrations.Migration):
                 ('EventName', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='BrawlNotes.official_1_events')),
                 ('SmashggName', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='BrawlNotes.player_registry')),
             ],
-        ), """
+        ),
 
     ]
