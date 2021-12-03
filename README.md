@@ -2,7 +2,7 @@
 
 A Django project template with CI, gitignore, README, development, and deployment instructions
 
-The project is deployed on Heroku: [https://brawlnotes.herokuapp.com/](https://brawlnotes.herokuapp.com/)
+The project is deployed on Heroku: [https://spring-453-2021-team-m.herokuapp.com/](https://spring-453-2021-team-m.herokuapp.com/)
 
 To develop/test this website, clone this repository and follow the instructions:
 
