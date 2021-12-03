@@ -1,0 +1,110 @@
+[
+{
+  "model": "sessions.session",
+  "pk": "cy96pzzputcbfaljlkfb0xktf6m6r5dc",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGlle4iWU9JzB-ouNA8iR4qRC3B0ipYD2zcx7iQTbWtPW85ImFmehxel3Q6BHbjvgO7TbLGlu6zKh3BV50C6vM-fn5XD_Dir0-q0La1TMirHo4sCQhYhDyMYx8JCZyCrvCMkHZTHEYMYQo4qaih29HcT7AxoiOFw:1mswNV:HFsq7Bpj4nO0bIFl3aZDAdj5FMJ-2fsyTj-OKYGWmEs",
+    "expire_date": "2021-12-17T00:24:41.485Z"
+  }
+},
+{
+  "model": "users.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$krSMG819fSBU$w3AF46InhRlEFm/81dthSFjtU6gIRd4Oui2lokHUUBI=",
+    "last_login": "2021-12-03T00:24:41.484Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-12-03T00:23:33.601Z",
+    "date_of_birth": "1991-08-27",
+    "email": "c00406898@louisiana.edu",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "BrawlNotes.placements_1",
+  "pk": 1,
+  "fields": {
+    "Year": 2021,
+    "Region": "NA",
+    "SmashggName": "Sandstorm",
+    "PowerRank": 1,
+    "EventName": "Winter Championship",
+    "Placement": "1",
+    "Losses": "N/A"
+  }
+},
+{
+  "model": "BrawlNotes.player_registry",
+  "pk": "Sandstorm",
+  "fields": {
+    "Region": "NA",
+    "BrawlhallaID": 738230
+  }
+},
+{
+  "model": "BrawlNotes.official_1_events",
+  "pk": "Winter Championship",
+  "fields": {
+    "Year": 2021,
+    "Region": "NA"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2021-12-03T00:25:47.570Z",
+    "user": [
+      "c00406898@louisiana.edu"
+    ],
+    "content_type": [
+      "BrawlNotes",
+      "official_1_events"
+    ],
+    "object_id": "Winter Championship",
+    "object_repr": "Official_1_Events object (Winter Championship)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2021-12-03T00:26:26.577Z",
+    "user": [
+      "c00406898@louisiana.edu"
+    ],
+    "content_type": [
+      "BrawlNotes",
+      "player_registry"
+    ],
+    "object_id": "Sandstorm",
+    "object_repr": "Sandstorm",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2021-12-03T00:26:47.664Z",
+    "user": [
+      "c00406898@louisiana.edu"
+    ],
+    "content_type": [
+      "BrawlNotes",
+      "placements_1"
+    ],
+    "object_id": "1",
+    "object_repr": "Placements_1 object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+}
+]
