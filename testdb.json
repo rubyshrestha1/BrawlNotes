@@ -1,28 +1,5 @@
 [
 {
-  "model": "auth.group",
-  "fields": {
-    "name": "Level_1",
-    "permissions": [
-      [
-        "view_characters_1",
-        "BrawlNotes",
-        "characters_1"
-      ],
-      [
-        "view_official_1_events",
-        "BrawlNotes",
-        "official_1_events"
-      ],
-      [
-        "view_placements_1",
-        "BrawlNotes",
-        "placements_1"
-      ]
-    ]
-  }
-},
-{
   "model": "sessions.session",
   "pk": "l5rr8m3qzw87c2zb9lyfjnz0gt3w7b71",
   "fields": {
