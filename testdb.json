@@ -81,7 +81,7 @@
     "SmashggName": "Sandstorm",
     "PowerRank": 1,
     "EventName": "Winter Championship",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "java, noeL"
   }
 },
@@ -94,7 +94,7 @@
     "SmashggName": "Boomie",
     "PowerRank": 2,
     "EventName": "Winter Championship",
-    "Placement": 1,
+    "Placement": "1",
     "Losses": "NO LOSS"
   }
 },
@@ -107,7 +107,7 @@
     "SmashggName": "Cody Travis",
     "PowerRank": 3,
     "EventName": "Winter Championship",
-    "Placement": 3,
+    "Placement": "3",
     "Losses": "java, java"
   }
 },
@@ -120,7 +120,7 @@
     "SmashggName": "Santy",
     "PowerRank": 4,
     "EventName": "Winter Championship",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "Boomie, Cody Travis"
   }
 },
@@ -133,7 +133,7 @@
     "SmashggName": "Phazon",
     "PowerRank": 5,
     "EventName": "Winter Championship",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "hardymj, pier"
   }
 },
@@ -146,7 +146,7 @@
     "SmashggName": "Snowy",
     "PowerRank": 6,
     "EventName": "Winter Championship",
-    "Placement": 25,
+    "Placement": "25",
     "Losses": "megD, dargoul"
   }
 },
@@ -159,7 +159,7 @@
     "SmashggName": "STING RAY",
     "PowerRank": 7,
     "EventName": "Winter Championship",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "pier, Cody Travis"
   }
 },
@@ -172,7 +172,7 @@
     "SmashggName": "hardymj",
     "PowerRank": 8,
     "EventName": "Winter Championship",
-    "Placement": 7,
+    "Placement":"7",
     "Losses": "Santy, Cody Travis"
   }
 },
@@ -185,7 +185,7 @@
     "SmashggName": "megD",
     "PowerRank": 10,
     "EventName": "Winter Championship",
-    "Placement": 13,
+    "Placement": "13",
     "Losses": "Obey | Cosolix, Sandstorm"
   }
 },
@@ -198,7 +198,7 @@
     "SmashggName": "java",
     "PowerRank": 11,
     "EventName": "Winter Championship",
-    "Placement": 2,
+    "Placement": "2",
     "Losses": "Boomie, Boomie"
   }
 },
@@ -211,7 +211,7 @@
     "SmashggName": "Blaizzy",
     "PowerRank": 9,
     "EventName": "Winter Championship",
-    "Placement": 0,
+    "Placement": "N/A",
     "Losses": "DID NOT PLAY"
   }
 },
@@ -224,7 +224,7 @@
     "SmashggName": "Zinquer",
     "PowerRank": 12,
     "EventName": "Winter Championship",
-    "Placement": 129,
+    "Placement": "129",
     "Losses": "Fifty, Mitchel"
   }
 },
@@ -237,7 +237,7 @@
     "SmashggName": "pier",
     "PowerRank": 13,
     "EventName": "Winter Championship",
-    "Placement": 4,
+    "Placement": "4",
     "Losses": "Boomie, Cody Travis"
   }
 },
@@ -250,7 +250,7 @@
     "SmashggName": "ImLlama",
     "PowerRank": 14,
     "EventName": "Winter Championship",
-    "Placement": 17,
+    "Placement": "17",
     "Losses": "megD, Phazon"
   }
 },
@@ -263,7 +263,7 @@
     "SmashggName": "Raydish",
     "PowerRank": 15,
     "EventName": "Winter Championship",
-    "Placement": 65,
+    "Placement": "65",
     "Losses": "Gbone, Obey | Cosolix"
   }
 },
@@ -276,7 +276,7 @@
     "SmashggName": "Sandstorm",
     "PowerRank": 1,
     "EventName": "Spring Championship",
-    "Placement": 1,
+    "Placement": "1",
     "Losses": "NO LOSS"
   }
 },
@@ -289,7 +289,7 @@
     "SmashggName": "Boomie",
     "PowerRank": 2,
     "EventName": "Spring Championship",
-    "Placement": 7,
+    "Placement": "7",
     "Losses": "megD, Cody Travis"
   }
 },
@@ -302,7 +302,7 @@
     "SmashggName": "Cody Travis",
     "PowerRank": 3,
     "EventName": "Spring Championship",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "STING RAY, Santy"
   }
 },
@@ -315,7 +315,7 @@
     "SmashggName": "Santy",
     "PowerRank": 4,
     "EventName": "Spring Championship",
-    "Placement": 2,
+    "Placement": "2",
     "Losses": "Sandstorm, Sandstorm"
   }
 },
@@ -328,7 +328,7 @@
     "SmashggName": "Phazon",
     "PowerRank": 5,
     "EventName": "Spring Championship",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "megD, Sandstorm"
   }
 },
@@ -341,7 +341,7 @@
     "SmashggName": "Snowy",
     "PowerRank": 6,
     "EventName": "Spring Championship",
-    "Placement": 25,
+    "Placement": "25",
     "Losses": "Van Thurl, Blaizzy"
   }
 },
@@ -354,7 +354,7 @@
     "SmashggName": "STING RAY",
     "PowerRank": 7,
     "EventName": "Spring Championship",
-    "Placement": 4,
+    "Placement": "4",
     "Losses": "megD, Sandstorm"
   }
 },
@@ -367,7 +367,7 @@
     "SmashggName": "hardymj",
     "PowerRank": 8,
     "EventName": "Spring Championship",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "Boomie, STING RAY"
   }
 },
@@ -380,7 +380,7 @@
     "SmashggName": "Blaizzy",
     "PowerRank": 9,
     "EventName": "Spring Championship",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "Cody Travis, megD"
   }
 },
@@ -393,7 +393,7 @@
     "SmashggName": "megD",
     "PowerRank": 10,
     "EventName": "Spring Championship",
-    "Placement": 3,
+    "Placement": "3",
     "Losses": "Santy, Santy"
   }
 },
@@ -406,7 +406,7 @@
     "SmashggName": "java",
     "PowerRank": 11,
     "EventName": "Spring Championship",
-    "Placement": 17,
+    "Placement": "17",
     "Losses": "Zacoi, megD"
   }
 },
@@ -419,7 +419,7 @@
     "SmashggName": "Zinquer",
     "PowerRank": 12,
     "EventName": "Spring Championship",
-    "Placement": 25,
+    "Placement": "25",
     "Losses": "Zacoi, pier"
   }
 },
@@ -432,7 +432,7 @@
     "SmashggName": "pier",
     "PowerRank": 13,
     "EventName": "Spring Championship",
-    "Placement": 17,
+    "Placement": "17",
     "Losses": "Phazon, Blaizzy"
   }
 },
@@ -445,7 +445,7 @@
     "SmashggName": "ImLlama",
     "PowerRank": 14,
     "EventName": "Spring Championship",
-    "Placement": 13,
+    "Placement": "13",
     "Losses": "Sandstorm, hardymj"
   }
 },
@@ -458,7 +458,7 @@
     "SmashggName": "Raydish",
     "PowerRank": 15,
     "EventName": "Spring Championship",
-    "Placement": 13,
+    "Placement": "13",
     "Losses": "Blaizzy, Santy"
   }
 },
@@ -471,7 +471,7 @@
     "SmashggName": "Pugsy",
     "PowerRank": 16,
     "EventName": "Spring Championship",
-    "Placement": 33,
+    "Placement": "33",
     "Losses": "Raydish, Lil Caped"
   }
 },
@@ -484,7 +484,7 @@
     "SmashggName": "Pugsy",
     "PowerRank": 16,
     "EventName": "Winter Championship",
-    "Placement": 13,
+    "Placement": "13",
     "Losses": "hardymj, noeL"
   }
 },
@@ -497,7 +497,7 @@
     "SmashggName": "Sandstorm",
     "PowerRank": 1,
     "EventName": "Parsec Invitational",
-    "Placement": 1,
+    "Placement": "1",
     "Losses": "Snowy"
   }
 },
@@ -510,7 +510,7 @@
     "SmashggName": "Boomie",
     "PowerRank": 2,
     "EventName": "Parsec Invitational",
-    "Placement": 3,
+    "Placement": "3",
     "Losses": "Snowy, Sandstorm"
   }
 },
@@ -523,7 +523,7 @@
     "SmashggName": "Cody Travis",
     "PowerRank": 3,
     "EventName": "Parsec Invitational",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "Sandstorm. megD"
   }
 },
@@ -536,7 +536,7 @@
     "SmashggName": "Santy",
     "PowerRank": 4,
     "EventName": "Parsec Invitational",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "Snowy, Boomie"
   }
 },
@@ -549,7 +549,7 @@
     "SmashggName": "Phazon",
     "PowerRank": 5,
     "EventName": "Parsec Invitational",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "Snowy, STING RAY"
   }
 },
@@ -562,7 +562,7 @@
     "SmashggName": "Snowy",
     "PowerRank": 6,
     "EventName": "Parsec Invitational",
-    "Placement": 2,
+    "Placement": "2",
     "Losses": "Sandstorm, Sandstorm"
   }
 },
@@ -575,7 +575,7 @@
     "SmashggName": "STING RAY",
     "PowerRank": 7,
     "EventName": "Parsec Invitational",
-    "Placement": 7,
+    "Placement": "7",
     "Losses": "Ethan, megD"
   }
 },
@@ -588,7 +588,7 @@
     "SmashggName": "hardymj",
     "PowerRank": 8,
     "EventName": "Parsec Invitational",
-    "Placement": 13,
+    "Placement": "13",
     "Losses": "Phazon, Boomie"
   }
 },
@@ -601,7 +601,7 @@
     "SmashggName": "Blaizzy",
     "PowerRank": 9,
     "EventName": "Parsec Invitational",
-    "Placement": 0,
+    "Placement": "N/A",
     "Losses": "DID NOT PLAY"
   }
 },
@@ -614,7 +614,7 @@
     "SmashggName": "megD",
     "PowerRank": 10,
     "EventName": "Parsec Invitational",
-    "Placement": 4,
+    "Placement": "4",
     "Losses": "Santy, Boomie"
   }
 },
@@ -627,7 +627,7 @@
     "SmashggName": "java",
     "PowerRank": 11,
     "EventName": "Parsec Invitational",
-    "Placement": 0,
+    "Placement": "N/A",
     "Losses": "DID NOT PLAY"
   }
 },
@@ -640,7 +640,7 @@
     "SmashggName": "Zinquer",
     "PowerRank": 12,
     "EventName": "Parsec Invitational",
-    "Placement": 0,
+    "Placement": "N/A",
     "Losses": "DID NOT PLAY"
   }
 },
@@ -653,7 +653,7 @@
     "SmashggName": "pier",
     "PowerRank": 13,
     "EventName": "Parsec Invitational",
-    "Placement": 7,
+    "Placement": "7",
     "Losses": "Sandstorm, Boomie"
   }
 },
@@ -666,7 +666,7 @@
     "SmashggName": "ImLlama",
     "PowerRank": 14,
     "EventName": "Autumn Championship",
-    "Placement": 13,
+    "Placement": "13",
     "Losses": "Santy, wrenchd"
   }
 },
@@ -679,7 +679,7 @@
     "SmashggName": "Raydish",
     "PowerRank": 15,
     "EventName": "Parsec Invitational",
-    "Placement": 0,
+    "Placement": "N/A",
     "Losses": "DID NOT PLAY"
   }
 },
@@ -692,7 +692,7 @@
     "SmashggName": "Pugsy",
     "PowerRank": 16,
     "EventName": "Parsec Invitational",
-    "Placement": 0,
+    "Placement": "N/A",
     "Losses": "DID NOT PLAY"
   }
 },
@@ -705,7 +705,7 @@
     "SmashggName": "Sandstorm",
     "PowerRank": 1,
     "EventName": "Summer Championship",
-    "Placement": 1,
+    "Placement": "1",
     "Losses": "Boomie"
   }
 },
@@ -718,7 +718,7 @@
     "SmashggName": "Boomie",
     "PowerRank": 2,
     "EventName": "Summer Championship",
-    "Placement": 2,
+    "Placement": "2",
     "Losses": "Sandstorm, Sandstorm"
   }
 },
@@ -731,7 +731,7 @@
     "SmashggName": "Cody Travis",
     "PowerRank": 3,
     "EventName": "Summer Championship",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "Sandstorm, Anonymous"
   }
 },
@@ -744,7 +744,7 @@
     "SmashggName": "Santy",
     "PowerRank": 4,
     "EventName": "Summer Championship",
-    "Placement": 5,
+    "Placement": "5",
     "Losses": "Boomie, Phazon"
   }
 },
@@ -757,7 +757,7 @@
     "SmashggName": "Phazon",
     "PowerRank": 5,
     "EventName": "Summer Championship",
-    "Placement": 3,
+    "Placement": "3",
     "Losses": "Sandstorm, Sandstorm"
   }
 },
@@ -770,7 +770,7 @@
     "SmashggName": "Snowy",
     "PowerRank": 6,
     "EventName": "Summer Championship",
-    "Placement": 7,
+    "Placement": "7",
     "Losses": "Santy, Phazon"
   }
 },
@@ -783,7 +783,7 @@
     "SmashggName": "STING RAY",
     "PowerRank": 7,
     "EventName": "Summer Championship",
-    "Placement": 25,
+    "Placement": "25",
     "Losses": "Mitchel, Anonymous"
   }
 },
@@ -796,7 +796,7 @@
     "SmashggName": "hardymj",
     "PowerRank": 8,
     "EventName": "Summer Championship",
-    "Placement": 7,
+    "Placement": "7",
     "Losses": "Santy, Anonymous"
   }
 },
@@ -809,7 +809,7 @@
     "SmashggName": "Blaizzy",
     "PowerRank": 9,
     "EventName": "Summer Championship",
-    "Placement": 17,
+    "Placement": "17",
     "Losses": "Cosolix, Pugsy"
   }
 },
@@ -822,7 +822,7 @@
     "SmashggName": "megD",
     "PowerRank": 10,
     "EventName": "Summer Championship",
-    "Placement": 25,
+    "Placement": "25",
     "Losses": "Zinquer, Blaizzy"
   }
 },
@@ -835,7 +835,7 @@
     "SmashggName": "java",
     "PowerRank": 11,
     "EventName": "Summer Championship",
-    "Placement": 13,
+    "Placement": "13",
     "Losses": "Snowy, hardymj"
   }
 },
@@ -848,7 +848,7 @@
     "SmashggName": "Zinquer",
     "PowerRank": 12,
     "EventName": "Summer Championship",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "Anonymous, Boomie"
   }
 },
@@ -861,7 +861,7 @@
     "SmashggName": "ImLlama",
     "PowerRank": 14,
     "EventName": "Summer Championship",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "Boomie, Phazon"
   }
 },
@@ -874,7 +874,7 @@
     "SmashggName": "Raydish",
     "PowerRank": 15,
     "EventName": "Summer Championship",
-    "Placement": 17,
+    "Placement": "17",
     "Losses": "Snowy, Phazon"
   }
 },
@@ -887,7 +887,7 @@
     "SmashggName": "Pugsy",
     "PowerRank": 16,
     "EventName": "Summer Championship",
-    "Placement": 9,
+    "Placement": "9",
     "Losses": "hardymj, Cody Travis"
   }
 },
