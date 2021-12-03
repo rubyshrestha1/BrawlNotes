@@ -6,6 +6,7 @@ test:
     script:
         - python manage.py migrate
         - python manage.py test
+        - python manage.py loaddata testdb.json
 
 staging:
     stage: deploy
@@ -14,4 +15,4 @@ staging:
         - apt-get install -y ruby-dev
         - gem install dpl
     script:
-        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY --run='python manage.py migrate'
+        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY --run='python manage.py migrate && python manage.py loaddata testdb.json'
