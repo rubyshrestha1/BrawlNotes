@@ -1,4 +1,4 @@
-image: python:3.8
+image: python:3.8.12
 test:
     stage: test
     before_script:
@@ -7,6 +7,15 @@ test:
         - python manage.py migrate
         - python manage.py test
         - python manage.py loaddata testdb.json
+        - coverage run --source='.' manage.py test
+        - coverage xml
+        - coverage report
+
+    coverage: '/TOTAL.*\s+(\d+%)$/'
+
+    artifacts:
+        reports:
+          cobertura: coverage.xml
 
 staging:
     stage: deploy
