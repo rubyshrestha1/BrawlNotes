@@ -588,3 +588,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/django,python,vscode,vim,windows,linux,macos,intellij,emacs
 
+coverage.xml
